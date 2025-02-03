@@ -1,0 +1,90 @@
+conky.config = {
+	alignment = 'top_right',
+	background = true,
+	border_inner_margin = 5,
+	border_outer_margin = 0,
+	border_width = 0,
+	color0 = 'ca1a8b';
+	color1 = 'add8e6',
+	color2 = 'ffe595',
+	color3 = 'orange',
+	color4 = 'red',
+	color5 = 'badbad',--0068c8
+	color6 = 'green',
+	color7 = 'FFDEAD',
+ 	color8 = '1e90ff',--dodgerblue
+	color9 = 'yellow';
+	cpu_avg_samples = 2,
+	default_color = 'white',
+--default_graph_size 15 40
+	default_outline_color = '#000000',
+	default_shade_color = '#000000',
+	double_buffer = true,
+	draw_borders = false,
+	draw_graph_borders = false,
+	draw_outline = false,-- amplifies text if yes
+	draw_shades = false,
+	extra_newline = false,
+	font = 'URW Gothic L:size=8',
+--font = 'Roboto:size=10',
+	gap_x = -410,-- l|r      20 is default, 3190 tre schermi
+	gap_y = 10,-- u|d      10 is default
+	imlib_cache_size = 0,
+	maximum_width = 400,
+--minimum_size = 50,
+	minimum_height = 50,
+	minimum_width = 400,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	override_utf8_locale = true,
+	own_window = true,
+	own_window_argb_visual = true,
+	own_window_argb_value = 200,
+	own_window_class = 'Conky',
+--own_window_class = 'Conky-semi',
+--own_window_colour = '#000000',
+	own_window_hints = 'undecorated,below,skip_taskbar,skip_pager',
+--own_window_title = '4_Moon Teo Style',
+	own_window_transparent = false,
+--own_window_type = 'desktop',     --normal, desktop, dock, panel or override
+	own_window_type = 'normal',
+	pad_percents = 2,
+	short_units = true,
+	show_graph_range = true,
+	show_graph_scale = true,
+	stippled_borders = 5,
+--total_run_times 0,
+	update_interval = 900,
+	uppercase = false,-- set to yes if you want all text to be in uppercase
+	use_spacer = 'none',
+	use_xft = true,
+	xftalpha = 1.0,
+	
+}
+
+conky.text = [[
+########################################### load script Python - show timezone, lat and long
+${execpi 900 python ~/.conky/weather/Openweathermap/CURRENT/current.py}${if_existing /tmp/script_CURRENT.lock}LOADING...${else}${execpi 900 sed -n '1p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}${execpi 900 sed -n '1p' $HOME/.conky/weather/Openweathermap/CURRENT/-flags.txt}
+${execpi 900 sed -n '2p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+########################################### set the compass
+${execpi 900 sed -n '1p' $HOME/.conky/weather/Openweathermap/CURRENT/currentcompass.txt}${execpi 900 sed -n '2p' $HOME/.conky/weather/Openweathermap/CURRENT/currentcompass.txt}
+########################################### show info for today (by words) plus icon and icon2
+${execpi 900 sed -n '1p' $HOME/.conky/weather/Openweathermap/CURRENT/currenticon.txt}
+${execpi 900 sed -n '3p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '4p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '1p' $HOME/.conky/weather/Openweathermap/CURRENT/currenticon2.txt}
+
+########################################### show temp and feel temp, min-max, wind data (plus thermometer icon if present)
+${execpi 900 sed -n '5p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '6p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '7p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '8p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '9p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+########################################### other info
+${execpi 900 sed -n '10p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '11p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${execpi 900 sed -n '12p' $HOME/.conky/weather/Openweathermap/CURRENT/conky.txt}
+${color2}${hr 1}${endif}
+]];
