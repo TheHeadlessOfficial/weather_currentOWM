@@ -9,7 +9,7 @@ from geopy.geocoders import Photon
 geolocator = Photon(user_agent="measurements")
 # Lock file to tell conky that the script is running
 lock_file = "/tmp/script_owmcurrent.lock"
-# Crea il file di lock all'inizio
+# Create lock file
 try:
     open(lock_file, 'w').close()
     ################################ my API url forecast (insert it between apostrophe, DON'T delete apostrophes)
