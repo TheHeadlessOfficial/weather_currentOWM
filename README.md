@@ -1,6 +1,6 @@
 # Conky Weather CURRENT (by OpenWeather)
  
-A conky (written in Python) that shows the CURRENT weather, using [OpenWeather API](https://openweathermap.org/) website.<br>
+A conky (with a script written in Python) that shows the CURRENT weather, using [OpenWeather API](https://openweathermap.org/) website.<br>
 
 <br>
 <br>
